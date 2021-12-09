@@ -3,7 +3,7 @@ fun depths(input: List<String>): List<Int> {
 }
 
 fun depths(input: List<String>, windowSize: Int): List<Int> {
-    return depths(input).windowed(windowSize).map(Iterable<Int>::sum)
+    return depths(input).windowed(windowSize).map(List<Int>::sum)
 }
 
 fun depthIncrease(depths: List<Int>): Int {

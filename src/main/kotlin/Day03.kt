@@ -5,27 +5,27 @@ fun lifeSupportRating(report: List<String>): Int {
 }
 
 fun oxygenGeneratorRating(report: List<String>): String {
-    val length = report[0].length
+    val length = report.first().length
     var remaining = report
     for (index in 0 until length) {
         val startingWith0 = mutableListOf<String>()
         val startingWith1 = mutableListOf<String>()
         for (number in remaining) (if (number[index] == '0') startingWith0 else startingWith1).add(number)
         remaining = if (startingWith0.size > startingWith1.size) startingWith0 else startingWith1
-        if (remaining.size == 1) return remaining[0]
+        if (remaining.size == 1) return remaining.first()
     }
     throw Exception()
 }
 
 fun co2ScrubberRating(report: List<String>): String {
-    val length = report[0].length
+    val length = report.first().length
     var remaining = report
     for (index in 0 until length) {
         val startingWith0 = mutableListOf<String>()
         val startingWith1 = mutableListOf<String>()
         for (number in remaining) (if (number[index] == '0') startingWith0 else startingWith1).add(number)
         remaining = if (startingWith0.size <= startingWith1.size) startingWith0 else startingWith1
-        if (remaining.size == 1) return remaining[0]
+        if (remaining.size == 1) return remaining.first()
     }
     throw Exception()
 }
@@ -37,7 +37,7 @@ fun powerConsumption(report: List<String>): Int {
 }
 
 fun gammaRate(report: List<String>): String {
-    val length = report[0].length
+    val length = report.first().length
     val gammaRate = CharArray(length)
     for (index in 0 until length) {
         var bitCount = 0

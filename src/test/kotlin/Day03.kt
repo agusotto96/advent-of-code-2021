@@ -9,13 +9,13 @@ internal class Day03 {
     @Test
     fun part1() {
         val powerConsumption = powerConsumption(input)
-        assertEquals(powerConsumption, 198)
+        assertEquals(198, powerConsumption)
     }
 
     @Test
     fun part2() {
         val lifeSupportRating = lifeSupportRating(input)
-        assertEquals(lifeSupportRating, 230)
+        assertEquals(230, lifeSupportRating)
     }
 
 

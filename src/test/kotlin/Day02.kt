@@ -10,14 +10,14 @@ internal class Day02 {
     fun part1() {
         val instructions = instructions(input)
         val course = simpleCourse(instructions)
-        assertEquals(course, 150)
+        assertEquals(150, course)
     }
 
     @Test
     fun part2() {
         val instructions = instructions(input)
         val course = complexCourse(instructions)
-        assertEquals(course, 900)
+        assertEquals(900, course)
     }
 
 }
