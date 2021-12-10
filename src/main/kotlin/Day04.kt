@@ -1,13 +1,13 @@
 typealias Board = List<Set<Int>>
 
+class Bingo(val numbers: List<Int>, val boards: List<Board>)
+
 fun Bingo(input: List<String>): Bingo {
     val numbers = input.first().split(",").map(String::toInt)
     val boards = input.asSequence().drop(1).filter(String::isNotBlank)
         .map { it.split(" ").filter(String::isNotBlank).map(String::toInt) }.chunked(5).map(::board).toList()
     return Bingo(numbers, boards)
 }
-
-class Bingo(val numbers: List<Int>, val boards: List<Board>)
 
 fun board(numbers: List<List<Int>>): Board {
     val board = mutableListOf<MutableSet<Int>>()
