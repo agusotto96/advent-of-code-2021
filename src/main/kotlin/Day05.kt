@@ -17,11 +17,11 @@ fun isDiagonal(line: Line): Boolean {
     return abs(abs(line.start.x) - abs(line.end.x)) == abs(abs(line.start.y) - abs(line.end.y))
 }
 
-fun overlappingPoints(lines: List<Line>, diagonal: Boolean = false): Int {
+fun overlappingPoints(lines: List<Line>, diagonals: Boolean = false): Int {
     val points = mutableSetOf<Point>()
     val overlappingPoints = mutableSetOf<Point>()
     for (line in lines) {
-        for (point in path(line, diagonal)) {
+        for (point in path(line, diagonals)) {
             if (!points.add(point)) {
                 overlappingPoints.add(point)
             }
@@ -30,14 +30,14 @@ fun overlappingPoints(lines: List<Line>, diagonal: Boolean = false): Int {
     return overlappingPoints.size
 }
 
-fun path(line: Line, diagonal: Boolean): List<Point> {
+fun path(line: Line, diagonals: Boolean): List<Point> {
     if (isHorizontal(line)) {
         return horizontalPath(line)
     }
     if (isVertical(line)) {
         return verticalPath(line)
     }
-    if (isDiagonal(line) && diagonal) {
+    if (isDiagonal(line) && diagonals) {
         return diagonalPath(line)
     }
     return emptyList()
