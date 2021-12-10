@@ -13,4 +13,11 @@ internal class Day05 {
         assertEquals(5, overlappingPoints)
     }
 
+    @Test
+    fun part2() {
+        val lines = lines(input)
+        val overlappingPoints = overlappingPoints(lines, diagonal = true)
+        assertEquals(12, overlappingPoints)
+    }
+
 }
