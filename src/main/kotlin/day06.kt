@@ -1,20 +1,20 @@
-fun simulateGrowth(initialAges: List<Int>, days: Int): Int {
-    val ages = initialAges.toMutableList()
+fun simulateGrowth(initialPopulation: Map<Int, Long>, days: Int): Long {
+    val population = initialPopulation.toMutableMap()
     repeat(days) {
-        var births = 0
-        for (index in ages.indices) {
-            if (ages[index] == 0) {
-                ages[index] = 6
-                births++
-            } else {
-                ages[index]--
-            }
+        val births = population[0] ?: 0
+        population[0] = 0
+        for (age in 1..8) {
+            population[age - 1] = population[age] ?: 0
         }
-        repeat(births) { ages.add(8) }
+        population[6] = (population[6] ?: 0) + births
+        population[8] = births
     }
-    return ages.count()
+    return population.values.sum()
 }
 
-fun ages(input: String): List<Int> {
-    return input.split(",").map(String::toInt)
+fun population(input: String): Map<Int, Long> {
+    val population = mutableMapOf(*(0..8).map { it to 0L }.toTypedArray())
+    val ages = input.split(",").map(String::toInt)
+    for (age in ages) population[age] = (population[age] ?: 0) + 1
+    return population
 }

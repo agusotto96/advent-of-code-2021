@@ -8,9 +8,16 @@ internal class Day06 {
 
     @Test
     fun part1() {
-        val ages = ages(input)
-        val simulateGrowth = simulateGrowth(ages, 80)
+        val population = population(input)
+        val simulateGrowth = simulateGrowth(population, 80)
         assertEquals(5934, simulateGrowth)
+    }
+
+    @Test
+    fun part2() {
+        val population = population(input)
+        val simulateGrowth = simulateGrowth(population, 256)
+        assertEquals(26984457539, simulateGrowth)
     }
 
 }
