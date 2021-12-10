@@ -9,8 +9,15 @@ internal class Day04 {
     @Test
     fun part1() {
         val bingo = Bingo(input)
-        val score = findWinnerScore(bingo)
+        val score = findFirstWinnerScore(bingo)
         assertEquals(4512, score)
+    }
+
+    @Test
+    fun part2() {
+        val bingo = Bingo(input)
+        val score = findLastWinnerScore(bingo)
+        assertEquals(1924, score)
     }
 
 }

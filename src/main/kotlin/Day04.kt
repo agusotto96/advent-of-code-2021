@@ -1,14 +1,9 @@
-typealias Board = List<MutableSet<Int>>
+typealias Board = List<Set<Int>>
 
 fun Bingo(input: List<String>): Bingo {
     val numbers = input.first().split(",").map(String::toInt)
-    val boards = input.asSequence()
-        .drop(1)
-        .filter(String::isNotBlank)
-        .map { it.split(" ").filter(String::isNotBlank).map(String::toInt) }
-        .chunked(5)
-        .map(::board)
-        .toList()
+    val boards = input.asSequence().drop(1).filter(String::isNotBlank)
+        .map { it.split(" ").filter(String::isNotBlank).map(String::toInt) }.chunked(5).map(::board).toList()
     return Bingo(numbers, boards)
 }
 
@@ -29,24 +24,39 @@ fun board(numbers: List<List<Int>>): Board {
     return board
 }
 
-fun findWinnerScore(bingo: Bingo): Int? {
+fun findFirstWinnerScore(bingo: Bingo): Int? {
+    val drawn = mutableSetOf<Int>()
     for (number in bingo.numbers) {
+        drawn.add(number)
         for (board in bingo.boards) {
-            var isWinner = false
             for (group in board) {
-                group.remove(number)
-                if (group.isEmpty()) {
-                    isWinner = true
+                if (drawn.containsAll(group)) {
+                    return score(number, drawn, board)
                 }
-            }
-            if (isWinner) {
-                return score(number, board)
             }
         }
     }
     return null
 }
 
-fun score(number: Int, board: Board): Int {
-    return number * board.flatten().toSet().sum()
+fun findLastWinnerScore(bingo: Bingo): Int? {
+    val drawn = mutableSetOf<Int>()
+    val scoresByWinner = mutableMapOf<Board, Int>()
+    var lastWinner: Board? = null
+    for (number in bingo.numbers) {
+        drawn.add(number)
+        for (board in bingo.boards) {
+            for (group in board) {
+                if (drawn.containsAll(group) && !scoresByWinner.contains(board)) {
+                    scoresByWinner[board] = score(number, drawn, board)
+                    lastWinner = board
+                }
+            }
+        }
+    }
+    return scoresByWinner[lastWinner]
+}
+
+fun score(number: Int, numbers: Set<Int>, board: Board): Int {
+    return number * (board.flatten().toSet() - numbers).sum()
 }
