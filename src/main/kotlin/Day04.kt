@@ -1,6 +1,6 @@
 typealias Board = List<Set<Int>>
 
-class Bingo(val numbers: List<Int>, val boards: List<Board>)
+data class Bingo(val numbers: List<Int>, val boards: List<Board>)
 
 fun Bingo(input: List<String>): Bingo {
     val numbers = input.first().split(",").map(String::toInt)
