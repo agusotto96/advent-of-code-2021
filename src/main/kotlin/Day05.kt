@@ -31,16 +31,12 @@ fun overlappingPoints(lines: List<Line>, diagonals: Boolean = false): Int {
 }
 
 fun path(line: Line, diagonals: Boolean): List<Point> {
-    if (isHorizontal(line)) {
-        return horizontalPath(line)
+    return when {
+        isHorizontal(line) -> horizontalPath(line)
+        isVertical(line) -> verticalPath(line)
+        isDiagonal(line) && diagonals -> diagonalPath(line)
+        else -> emptyList()
     }
-    if (isVertical(line)) {
-        return verticalPath(line)
-    }
-    if (isDiagonal(line) && diagonals) {
-        return diagonalPath(line)
-    }
-    return emptyList()
 }
 
 fun horizontalPath(line: Line): List<Point> {
