@@ -34,8 +34,8 @@ fun output(display: Display): Int {
     return display.digits.map(digitsByPattern::getValue).joinToString("", transform = Int::toString).toInt()
 }
 
-fun digitsByPattern(segments: List<Segments>): Map<Segments, Int> {
-    val patternsBySize = segments.groupBy(Segments::size)
+fun digitsByPattern(patterns: List<Segments>): Map<Segments, Int> {
+    val patternsBySize = patterns.groupBy(Segments::size)
     val one = patternsBySize.getValue(2).single()
     val four = patternsBySize.getValue(4).single()
     val seven = patternsBySize.getValue(3).single()
