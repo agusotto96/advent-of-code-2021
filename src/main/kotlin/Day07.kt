@@ -1,7 +1,8 @@
+import java.io.File
 import kotlin.math.abs
 
-fun positions(input: String): List<Int> {
-    return input.split(",").map(String::toInt)
+fun positions(file: File): List<Int> {
+    return file.readText().split(",").map(String::toInt)
 }
 
 fun positionsCount(positions: List<Int>): Map<Int, Int> {

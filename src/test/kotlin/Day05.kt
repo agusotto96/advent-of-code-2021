@@ -4,20 +4,18 @@ import java.io.File
 
 internal class Day05 {
 
-    private val input = File("src/test/resources/Day05.txt").readLines()
+    private val input = File("src/test/resources/Day05.txt")
 
     @Test
     fun part1() {
         val lines = lines(input)
-        val overlappingPoints = overlappingPoints(lines)
-        assertEquals(5, overlappingPoints)
+        assertEquals(5, overlappingPoints(lines))
     }
 
     @Test
     fun part2() {
         val lines = lines(input)
-        val overlappingPoints = overlappingPoints(lines, diagonals = true)
-        assertEquals(12, overlappingPoints)
+        assertEquals(12, overlappingPoints(lines, diagonals = true))
     }
 
 }

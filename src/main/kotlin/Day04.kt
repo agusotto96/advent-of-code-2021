@@ -1,11 +1,15 @@
+import java.io.File
+
 typealias Board = List<Set<Int>>
 
 data class Bingo(val numbers: List<Int>, val boards: List<Board>)
 
-fun Bingo(input: List<String>): Bingo {
-    val numbers = input.first().split(",").map(String::toInt)
-    val boards = input.asSequence().drop(1).filter(String::isNotBlank)
-        .map { it.split(" ").filter(String::isNotBlank).map(String::toInt) }.chunked(5).map(::board).toList()
+fun Bingo(file: File, boardSize: Int): Bingo {
+    val lines = file.readLines()
+    val numbers = lines.first().split(",").map(String::toInt)
+    val boards = lines.asSequence().drop(1).filter(String::isNotBlank)
+        .map { it.split(" ").filter(String::isNotBlank).map(String::toInt) }
+        .chunked(boardSize).map(::board).toList()
     return Bingo(numbers, boards)
 }
 

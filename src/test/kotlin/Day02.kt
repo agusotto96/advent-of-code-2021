@@ -4,20 +4,18 @@ import java.io.File
 
 internal class Day02 {
 
-    private val input = File("src/test/resources/Day02.txt").readLines()
+    private val input = File("src/test/resources/Day02.txt")
 
     @Test
     fun part1() {
         val instructions = instructions(input)
-        val course = simpleCourse(instructions)
-        assertEquals(150, course)
+        assertEquals(150, simpleCourse(instructions))
     }
 
     @Test
     fun part2() {
         val instructions = instructions(input)
-        val course = complexCourse(instructions)
-        assertEquals(900, course)
+        assertEquals(900, complexCourse(instructions))
     }
 
 }

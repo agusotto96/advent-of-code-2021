@@ -1,3 +1,5 @@
+import java.io.File
+
 fun lifeSupportRating(report: List<String>): Int {
     val oxygenGeneratorRating = oxygenGeneratorRating(report)
     val co2ScrubberRating = co2ScrubberRating(report)
@@ -12,7 +14,7 @@ fun oxygenGeneratorRating(report: List<String>): String {
         val startingWith1 = mutableListOf<String>()
         for (number in remaining) (if (number[index] == '0') startingWith0 else startingWith1).add(number)
         remaining = if (startingWith0.size > startingWith1.size) startingWith0 else startingWith1
-        if (remaining.size == 1) return remaining.first()
+        if (remaining.size == 1) return remaining.single()
     }
     throw Exception()
 }
@@ -25,9 +27,13 @@ fun co2ScrubberRating(report: List<String>): String {
         val startingWith1 = mutableListOf<String>()
         for (number in remaining) (if (number[index] == '0') startingWith0 else startingWith1).add(number)
         remaining = if (startingWith0.size <= startingWith1.size) startingWith0 else startingWith1
-        if (remaining.size == 1) return remaining.first()
+        if (remaining.size == 1) return remaining.single()
     }
     throw Exception()
+}
+
+fun report(file: File): List<String> {
+    return file.readLines()
 }
 
 fun powerConsumption(report: List<String>): Int {

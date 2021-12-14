@@ -4,20 +4,18 @@ import java.io.File
 
 internal class Day01 {
 
-    private val input = File("src/test/resources/Day01.txt").readLines()
+    private val input = File("src/test/resources/Day01.txt")
 
     @Test
     fun part1() {
         val depths = depths(input)
-        val depthIncrease = depthIncrease(depths)
-        assertEquals(7, depthIncrease)
+        assertEquals(7, depthIncrease(depths))
     }
 
     @Test
     fun part2() {
         val depths = depths(input, 3)
-        val depthIncrease = depthIncrease(depths)
-        assertEquals(5, depthIncrease)
+        assertEquals(5, depthIncrease(depths))
     }
 
 }

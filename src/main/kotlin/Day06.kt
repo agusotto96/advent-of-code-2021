@@ -1,3 +1,5 @@
+import java.io.File
+
 fun simulateGrowth(initialPopulation: Map<Int, Long>, days: Int): Long {
     val population = initialPopulation.toMutableMap()
     repeat(days) {
@@ -12,9 +14,9 @@ fun simulateGrowth(initialPopulation: Map<Int, Long>, days: Int): Long {
     return population.values.sum()
 }
 
-fun population(input: String): Map<Int, Long> {
+fun population(file: File): Map<Int, Long> {
     val population = mutableMapOf(*(0..8).map { it to 0L }.toTypedArray())
-    val ages = input.split(",").map(String::toInt)
+    val ages = file.readText().split(",").map(String::toInt)
     for (age in ages) population[age] = (population[age] ?: 0) + 1
     return population
 }

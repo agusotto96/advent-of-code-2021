@@ -1,5 +1,7 @@
-fun instructions(input: List<String>): List<Pair<String, Int>> {
-    return input.map { it.split(' ') }.map { it[0] to it[1].toInt() }
+import java.io.File
+
+fun instructions(file: File): List<Pair<String, Int>> {
+    return file.readLines().map { it.split(' ') }.map { it[0] to it[1].toInt() }
 }
 
 fun simpleCourse(instructions: List<Pair<String, Int>>): Int {

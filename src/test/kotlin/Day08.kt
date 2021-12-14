@@ -4,20 +4,18 @@ import java.io.File
 
 internal class Day08 {
 
-    private val input = File("src/test/resources/Day08.txt").readLines()
+    private val input = File("src/test/resources/Day08.txt")
 
     @Test
     fun part1() {
-        val entries = entries(input)
-        val count = countUniqueSignalDigits(entries)
-        assertEquals(26, count)
+        val displays = displays(input)
+        assertEquals(26, uniqueSegmentNumberDigits(displays))
     }
 
     @Test
     fun part2() {
-        val entries = entries(input)
-        val count = entriesDigitsSum(entries)
-        assertEquals(61229, count)
+        val displays = displays(input)
+        assertEquals(61229, displaysOutputSum(displays))
     }
 
 }

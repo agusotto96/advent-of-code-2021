@@ -4,20 +4,18 @@ import java.io.File
 
 internal class Day07 {
 
-    private val input = File("src/test/resources/Day07.txt").readText()
+    private val input = File("src/test/resources/Day07.txt")
 
     @Test
     fun part1() {
         val positions = positions(input)
-        val fuelCost = bestPositionFuelCost(positions, ::constantFuelCost)
-        assertEquals(37, fuelCost)
+        assertEquals(37, bestPositionFuelCost(positions, ::constantFuelCost))
     }
 
     @Test
     fun part2() {
         val positions = positions(input)
-        val fuelCost = bestPositionFuelCost(positions, ::incrementalFuelCost)
-        assertEquals(168, fuelCost)
+        assertEquals(168, bestPositionFuelCost(positions, ::incrementalFuelCost))
     }
 
 }

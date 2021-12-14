@@ -1,3 +1,4 @@
+import java.io.File
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
@@ -59,8 +60,8 @@ fun diagonalPath(line: Line): List<Point> {
     return xPath.zip(yPath).map { pair -> Point(pair.first, pair.second) }
 }
 
-fun lines(input: List<String>): List<Line> {
-    return input.map(::Line)
+fun lines(file: File): List<Line> {
+    return file.readLines().map(::Line)
 }
 
 fun Line(input: String): Line {

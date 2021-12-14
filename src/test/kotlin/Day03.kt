@@ -4,18 +4,18 @@ import java.io.File
 
 internal class Day03 {
 
-    private val input = File("src/test/resources/Day03.txt").readLines()
+    private val input = File("src/test/resources/Day03.txt")
 
     @Test
     fun part1() {
-        val powerConsumption = powerConsumption(input)
-        assertEquals(198, powerConsumption)
+        val report = report(input)
+        assertEquals(198, powerConsumption(report))
     }
 
     @Test
     fun part2() {
-        val lifeSupportRating = lifeSupportRating(input)
-        assertEquals(230, lifeSupportRating)
+        val report = report(input)
+        assertEquals(230, lifeSupportRating(report))
     }
 
 
