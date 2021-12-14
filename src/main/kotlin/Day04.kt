@@ -15,12 +15,12 @@ fun Bingo(file: File, boardSize: Int): Bingo {
 
 fun board(numbers: List<List<Int>>): Board {
     val board = mutableListOf<MutableSet<Int>>()
-    for (x in numbers.indices) {
+    for (i in numbers.indices) {
         val row = mutableSetOf<Int>()
         val column = mutableSetOf<Int>()
-        for (y in numbers.indices) {
-            row.add(numbers[x][y])
-            column.add(numbers[y][x])
+        for (j in numbers.indices) {
+            row.add(numbers[i][j])
+            column.add(numbers[j][i])
         }
         board.add(row)
         board.add(column)
