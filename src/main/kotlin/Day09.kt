@@ -2,21 +2,22 @@ import java.io.File
 
 typealias Heightmap = List<List<Int>>
 
+typealias Location = Pair<Int, Int>
+
 fun heightmap(file: File): Heightmap {
     return file.readLines().map { it.map(Char::digitToInt) }
 }
 
 fun lowestHeightsRiskLevel(heightmap: Heightmap): Int {
-    val lowestHeights = lowestHeights(heightmap)
-    return lowestHeights.map(::riskLevel).sum()
-}
-
-fun basinSizes(heightmap: Heightmap): List<Int> {
-    return lowestLocations(heightmap).map { basin(heightmap, it).size }
+    return lowestHeights(heightmap).map(::riskLevel).sum()
 }
 
 fun multiplyBiggestBasinSizes(heightmap: Heightmap, times: Int): Int {
     return basinSizes(heightmap).sorted().takeLast(times).reduce(Int::times)
+}
+
+fun basinSizes(heightmap: Heightmap): List<Int> {
+    return lowestLocations(heightmap).map { basin(heightmap, it) }.map(Set<Location>::size)
 }
 
 fun basin(heightmap: Heightmap, lowest: Location, visited: MutableSet<Location> = mutableSetOf(lowest)): Set<Location> {
@@ -94,5 +95,3 @@ private fun left(location: Location): Location {
 private fun right(location: Location): Location {
     return location.first to location.second + 1
 }
-
-typealias Location = Pair<Int, Int>
