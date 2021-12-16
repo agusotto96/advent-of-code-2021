@@ -12,4 +12,10 @@ internal class Day09 {
         assertEquals(15, lowestHeightsRiskLevel(heightmap))
     }
 
+    @Test
+    fun part2() {
+        val heightmap = heightmap(input)
+        assertEquals(1134, multiplyBiggestBasinSizes(heightmap, 3))
+    }
+
 }
