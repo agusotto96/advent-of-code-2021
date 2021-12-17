@@ -32,7 +32,7 @@ fun fileCorruptedScore(file: File): Int {
         .sum()
 }
 
-fun fileUnclosedScore(file: File): Int {
+fun fileUnclosedScore(file: File): Long {
     val lines = file.readLines()
     val scores = lines
         .asSequence()
@@ -62,8 +62,8 @@ fun unclosedChars(line: List<Char>): List<Char> {
     return chars
 }
 
-fun unclosedCharsScore(line: List<Char>): Int {
-    var score = 0
+fun unclosedCharsScore(line: List<Char>): Long {
+    var score = 0L
     for (char in unclosedChars(line).reversed()) {
         score *= 5
         score += score(char) ?: 0
